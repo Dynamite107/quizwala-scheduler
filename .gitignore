@@ -1,0 +1,6 @@
+.env
+temp/
+logs/
+__pycache__/
+*.log
+*.bak
