@@ -5,41 +5,47 @@ on:
     - cron: '*/5 * * * *'
   workflow_dispatch:
 
-concurrency:
-  group: instagram-publisher
-  cancel-in-progress: false
-
 jobs:
   auto-publish:
     runs-on: ubuntu-latest
-    
+    permissions:
+      contents: write
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.11'
-        
-    - name: Install dependencies
-      run: |
-        pip install requests pytz python-dotenv
-        
-    - name: Execute Publisher State Machine
-      env:
-        APP_ID: ${{ secrets.APP_ID }}
-        APP_SECRET: ${{ secrets.APP_SECRET }}
-        PAGE_ID: ${{ secrets.PAGE_ID }}
-        IG_USER_ID: ${{ secrets.IG_USER_ID }}
-        USER_ACCESS_TOKEN: ${{ secrets.USER_ACCESS_TOKEN }}
-        PAGE_ACCESS_TOKEN: ${{ secrets.PAGE_ACCESS_TOKEN }}
-      run: |
-        python publisher.py
-        
-    - name: Commit and Push Queue State
-      run: |
-        git config --global user.name 'QuizWala Bot'
-        git config --global user.email 'bot@quizwala.com'
-        git add queue.json logs/publisher.log || true
-        git commit -m "chore(queue): update state machine [skip ci]" || echo "No update."
-        git push
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests pytz python-dotenv
+
+      - name: Execute Publisher State Machine
+        env:
+          APP_ID: ${{ secrets.APP_ID }}
+          APP_SECRET: ${{ secrets.APP_SECRET }}
+          PAGE_ID: ${{ secrets.PAGE_ID }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          USER_ACCESS_TOKEN: ${{ secrets.USER_ACCESS_TOKEN }}
+          PAGE_ACCESS_TOKEN: ${{ secrets.PAGE_ACCESS_TOKEN }}
+        run: python publisher.py
+
+      - name: Commit and Push Queue State
+        run: |
+          git config --global user.name 'QuizWala Bot'
+          git config --global user.email 'bot@quizwala.com'
+
+          git add queue.json
+
+          if [ -f logs/publisher.log ]; then
+            git add logs/publisher.log
+          fi
+
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(queue): update state machine [skip ci]"
+            git push origin main
+          else
+            echo "No staged changes to commit."
+          fi
