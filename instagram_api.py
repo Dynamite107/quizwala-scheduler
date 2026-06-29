@@ -23,18 +23,18 @@ def create_container(edge_url: str, caption: str, media_type="REELS") -> str:
     return resp.json()['id']
 
 def poll_container(cid: str) -> bool:
+    """FIX 5: 1-Shot Polling. Never Sleep."""
     session = meta_auth.get_secure_session()
     payload = meta_auth.get_auth_payload(is_page=True)
     
-    for _ in range(config.MAX_POLL):
-        time.sleep(config.POLL_INTERVAL)
-        res = session.get(f"{BASE}/{cid}", params={
-            "fields": "status_code",
-            "access_token": payload['access_token']
-        }).json()
-        status = res.get('status_code', 'UNKNOWN')
-        if status == "FINISHED": return True
-        if status == "ERROR": raise Exception(f"Meta IG Container Failed: {res}")
+    res = session.get(f"{BASE}/{cid}", params={
+        "fields": "status_code",
+        "access_token": payload['access_token']
+    }).json()
+    
+    status = res.get('status_code', 'UNKNOWN')
+    if status == "FINISHED": return True
+    if status == "ERROR": raise Exception(f"Meta IG Container Failed: {res}")
     return False
 
 def publish_container(cid: str) -> str:

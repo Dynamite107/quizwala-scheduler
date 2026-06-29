@@ -1,8 +1,12 @@
 name: QuizWala IG Auto Publisher
 on:
   schedule:
-    - cron: '* * * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
+concurrency:
+  group: instagram-publisher
+  cancel-in-progress: false
+
 jobs:
   auto-publish:
     runs-on: ubuntu-latest

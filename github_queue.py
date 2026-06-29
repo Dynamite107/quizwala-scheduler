@@ -24,7 +24,7 @@ def load_queue():
 
 def save_queue(queue_data):
     with open(config.QUEUE_FILE, "w") as f:
-        json.dump(queue_data, f, indent=2)
+        json.dump(queue_data, f, indent=4)
 
 def add_job_to_queue(part, file_path, scheduled_unix, caption, media_type):
     queue = load_queue()
@@ -36,13 +36,22 @@ def add_job_to_queue(part, file_path, scheduled_unix, caption, media_type):
     pub_iso, proc_iso = pub_dt.isoformat(), proc_dt.isoformat()
     
     for job in queue:
-        if job["drive_id"] == drive_id and job["publish_time"] == pub_iso:
+        if job.get("drive_id") == drive_id and job.get("publish_time") == pub_iso:
             return job["job_id"]
 
     new_job = {
-        "job_id": str(uuid.uuid4()), "part_name": part, "status": "pending",
-        "retry_count": 0, "media_type": media_type, "drive_id": drive_id,
-        "caption": caption, "publish_time": pub_iso, "processing_time": proc_iso
+        "job_id": str(uuid.uuid4()), 
+        "part_name": part, 
+        "status": "pending",
+        "retry_count": 0, 
+        "container_id": "",
+        "published_id": "",
+        "last_error": "",
+        "media_type": media_type, 
+        "drive_id": drive_id,
+        "caption": caption, 
+        "publish_time": pub_iso, 
+        "processing_time": proc_iso
     }
     queue.append(new_job)
     save_queue(queue)
