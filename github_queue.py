@@ -50,11 +50,11 @@ def add_job_to_queue(part, file_path, scheduled_unix, caption, media_type):
 
 def sync_git_queue():
     try:
-        subprocess.run(["git", "add", "Scheduler/queue.json"], check=True, cwd=config.BASE_DIR)
-        status = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True, cwd=config.BASE_DIR)
+        subprocess.run(["git", "add", "queue.json"], check=True, cwd=config.SCHEDULER_DIR)
+        status = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True, cwd=config.SCHEDULER_DIR)
         if "queue.json" in status.stdout:
-            subprocess.run(["git", "commit", "-m", "chore(queue): update IG schedule [skip ci]"], check=True, cwd=config.BASE_DIR)
-            subprocess.run(["git", "push"], check=True, cwd=config.BASE_DIR)
+            subprocess.run(["git", "commit", "-m", "chore(queue): update IG schedule [skip ci]"], check=True, cwd=config.SCHEDULER_DIR)
+            subprocess.run(["git", "push"], check=True, cwd=config.SCHEDULER_DIR)
             print("   🚀 queue.json successfully pushed to GitHub!")
         else: print("   ℹ️ Git Queue unchanged.")
     except Exception as e:
