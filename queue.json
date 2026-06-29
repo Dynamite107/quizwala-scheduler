@@ -2,7 +2,7 @@
     {
         "job_id": "d0b37da3-142b-4171-aa2c-34ccb8cb5545",
         "part_name": "Part1",
-        "status": "container_created",
+        "status": "container_ready",
         "retry_count": 0,
         "container_id": "18064427693489901",
         "published_id": "",
@@ -16,7 +16,7 @@
     {
         "job_id": "e65693d4-c514-4239-978f-df222ec576fb",
         "part_name": "Image",
-        "status": "container_created",
+        "status": "container_ready",
         "retry_count": 0,
         "container_id": "18064427696489901",
         "published_id": "",
