@@ -44,7 +44,7 @@
     {
         "job_id": "9b2b1b05-27ed-4728-a0ce-115c16e31b17",
         "part_name": "Part3",
-        "status": "container_created",
+        "status": "container_ready",
         "retry_count": 0,
         "container_id": "18064489736489901",
         "published_id": "",
