@@ -2,10 +2,10 @@
     {
         "job_id": "b1216cb6-1582-42aa-b18b-1edc7e7eec2a",
         "part_name": "Part2",
-        "status": "container_ready",
+        "status": "published",
         "retry_count": 0,
         "container_id": "18064787507489901",
-        "published_id": "",
+        "published_id": "18468571498129339",
         "last_error": "",
         "media_type": "REELS",
         "drive_id": "1cP--czqKW-W1o5a8PTgowq_Qpm6onuuR",
