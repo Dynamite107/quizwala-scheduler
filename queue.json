@@ -142,9 +142,9 @@
     {
         "job_id": "19b40569-236f-4989-80a0-d5e5ecbe9ab4",
         "part_name": "Part1",
-        "status": "pending",
+        "status": "container_created",
         "retry_count": 0,
-        "container_id": "",
+        "container_id": "18065067389489901",
         "published_id": "",
         "last_error": "",
         "media_type": "REELS",
@@ -156,9 +156,9 @@
     {
         "job_id": "297db3fb-7ee6-41ba-b2ad-69f150521f3a",
         "part_name": "Image",
-        "status": "pending",
+        "status": "container_created",
         "retry_count": 0,
-        "container_id": "",
+        "container_id": "18065067392489901",
         "published_id": "",
         "last_error": "",
         "media_type": "IMAGE",
