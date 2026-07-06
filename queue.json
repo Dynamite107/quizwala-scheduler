@@ -170,10 +170,10 @@
     {
         "job_id": "ad5b0bfd-473d-4d81-b01e-8e49186a637b",
         "part_name": "Part2",
-        "status": "container_ready",
+        "status": "published",
         "retry_count": 0,
         "container_id": "18065114186489901",
-        "published_id": "",
+        "published_id": "17973182303907664",
         "last_error": "",
         "media_type": "REELS",
         "drive_id": "1cP--czqKW-W1o5a8PTgowq_Qpm6onuuR",
