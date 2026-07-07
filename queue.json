@@ -240,10 +240,10 @@
     {
         "job_id": "d2f983fc-300a-4761-8c61-1533a593fe32",
         "part_name": "Part3",
-        "status": "container_ready",
+        "status": "published",
         "retry_count": 0,
         "container_id": "18065245004489901",
-        "published_id": "",
+        "published_id": "18090207371562562",
         "last_error": "",
         "media_type": "REELS",
         "drive_id": "1xDpyNvDVe9UX1OU9ULF2UEqC1FTUZ0Ej",
