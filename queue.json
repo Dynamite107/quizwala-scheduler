@@ -254,7 +254,7 @@
     {
         "job_id": "2a82a52b-16b4-4c71-be6d-6bb57e970368",
         "part_name": "Part2",
-        "status": "container_created",
+        "status": "container_ready",
         "retry_count": 0,
         "container_id": "18065336849489901",
         "published_id": "",
