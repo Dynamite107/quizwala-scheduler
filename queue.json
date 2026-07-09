@@ -310,10 +310,10 @@
     {
         "job_id": "9d81c227-31e3-4a4f-901b-dc83cdb200cf",
         "part_name": "Part2",
-        "status": "container_ready",
+        "status": "published",
         "retry_count": 0,
         "container_id": "18065444702489901",
-        "published_id": "",
+        "published_id": "18349007182175479",
         "last_error": "",
         "media_type": "REELS",
         "drive_id": "1l9XOTFxQg1trs3in1LMPHVK7HX2esT2d",
