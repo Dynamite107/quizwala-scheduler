@@ -352,9 +352,9 @@
     {
         "job_id": "e6c472d9-15d0-496a-be15-c79deb68887a",
         "part_name": "Part3",
-        "status": "pending",
+        "status": "container_created",
         "retry_count": 0,
-        "container_id": "",
+        "container_id": "18065570813489901",
         "published_id": "",
         "last_error": "",
         "media_type": "REELS",
