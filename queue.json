@@ -352,10 +352,10 @@
     {
         "job_id": "e6c472d9-15d0-496a-be15-c79deb68887a",
         "part_name": "Part3",
-        "status": "container_ready",
+        "status": "published",
         "retry_count": 0,
         "container_id": "18065570813489901",
-        "published_id": "",
+        "published_id": "18103931036028379",
         "last_error": "",
         "media_type": "REELS",
         "drive_id": "11YB5xpLTRZOUgQE0hleT12BrjEJSwWTw",
